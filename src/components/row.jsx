@@ -81,3 +81,16 @@ export const HeaderRow = () => {
         </>
     );
 };
+
+export const GrandTotalRow = (props) => {
+    return (
+        <>
+            <TextCell>Grand Total</TextCell>
+            <TextCell>{props.total}</TextCell>
+            <TextCell></TextCell>
+            <TextCell></TextCell>
+            <TextCell></TextCell>
+            <TextCell></TextCell>
+        </>
+    );
+};

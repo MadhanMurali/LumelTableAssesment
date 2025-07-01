@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { HeaderRow, Row } from "./row";
+import { GrandTotalRow, HeaderRow, Row } from "./row";
 
 const TableStyled = styled.div`
     display: grid;
@@ -9,17 +9,23 @@ const TableStyled = styled.div`
 TableStyled.displayName = "TableStyled";
 
 export const Table = (props) => {
+    let total = 0;
+
     return (
         <TableStyled>
             <HeaderRow />
-            {props.rows.map((row, index) => (
-                <Row
-                    key={row.id}
-                    rowPath={String(index)}
-                    data={row}
-                    handleTableState={props.handleTableState}
-                />
-            ))}
+            {props.rows.map((row, index) => {
+                total += row.value;
+                return (
+                    <Row
+                        key={row.id}
+                        rowPath={String(index)}
+                        data={row}
+                        handleTableState={props.handleTableState}
+                    />
+                );
+            })}
+            <GrandTotalRow total={total} />
         </TableStyled>
     );
 };
